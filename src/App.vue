@@ -1,8 +1,28 @@
 <template>
   <div id="app">
     <!--导航栏头部 -->
-    <Nav></Nav>
-    <Content></Content>
+      <el-menu
+    :default-active="activeIndex2"
+    class="el-menu-demo"
+    mode="horizontal"
+    @select="handleSelect"
+    background-color="#409EFF"
+    text-color="#fff"
+    active-text-color="#ffd04b">
+      <el-menu-item index="1" :class="isActive"><router-link to="/Hot">正在热映</router-link></el-menu-item>
+      <el-menu-item index="2"><router-link to="/Soon">即将上映</router-link></el-menu-item>
+      <el-menu-item index="3"><router-link to="/TOP250" >TOP250</router-link></el-menu-item>
+      <el-menu-item :class="right"><el-form ref="form" :model="form" label-width="80px"><el-input
+      placeholder="Search..."
+      prefix-icon="el-icon-search"
+      v-model="input21">
+    </el-input></el-form></el-menu-item>
+
+    </el-menu>
+    <div>
+      <!--展示路由内容区域-->
+        <router-view></router-view>
+    </div>
     <Footer></Footer>
 
 
