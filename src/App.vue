@@ -2,25 +2,21 @@
   <div id="app">
     <!--导航栏头部 -->
     <Nav></Nav>
-    <Home></Home>
+    <Content></Content>
     <Footer></Footer>
 
-    <div>
-      <el-button>默认按钮</el-button>
-      <el-button type="primary">主要按钮</el-button>
-      <el-button type="success">成功按钮</el-button>
-      <el-button type="info">信息按钮</el-button>
-      <el-button type="warning">警告按钮</el-button>
-      <el-button type="danger">危险按钮</el-button>
-    </div>
+
 
   </div>
 </template>
 
 <script>
+//导入模块
 import Home from './components/Home.vue'
 import Footer from './components/Footer.vue'
 import Nav from './components/Nav.vue'
+import Content from './components/Content.vue'
+
 export default {
   name: 'app',
   data () {
@@ -31,6 +27,7 @@ export default {
   components:{
     Home,
     Footer,
+    Content,
     Nav
   }
 }
