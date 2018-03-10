@@ -1,16 +1,37 @@
 <template>
   <div id="app">
+    <!--导航栏头部 -->
+    <Nav></Nav>
+    <Home></Home>
+    <Footer></Footer>
+
+    <div>
+      <el-button>默认按钮</el-button>
+      <el-button type="primary">主要按钮</el-button>
+      <el-button type="success">成功按钮</el-button>
+      <el-button type="info">信息按钮</el-button>
+      <el-button type="warning">警告按钮</el-button>
+      <el-button type="danger">危险按钮</el-button>
+    </div>
 
   </div>
 </template>
 
 <script>
+import Home from './components/Home.vue'
+import Footer from './components/Footer.vue'
+import Nav from './components/Nav.vue'
 export default {
   name: 'app',
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
     }
+  },
+  components:{
+    Home,
+    Footer,
+    Nav
   }
 }
 </script>
