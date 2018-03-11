@@ -13,9 +13,9 @@
           text-color="#fff"
           active-text-color="#ffd04b">
 
-             <el-menu-item index="1"><router-link to="/Hot">正在热映</router-link></el-menu-item>
-             <el-menu-item index="2"><router-link to="/Soon">即将上映</router-link></el-menu-item>
-             <el-menu-item index="3"><router-link to="/TOP250" >TOP250</router-link></el-menu-item>
+             <el-menu-item index="1"><router-link to="/Hot/1">正在热映</router-link></el-menu-item>
+             <el-menu-item index="2"><router-link to="/Soon/1">即将上映</router-link></el-menu-item>
+             <el-menu-item index="3"><router-link to="/TOP250/1" >TOP250</router-link></el-menu-item>
              <el-menu-item ><el-form ref="form"  label-width="80px"><el-input
             placeholder="Search..."
             prefix-icon="el-icon-search"

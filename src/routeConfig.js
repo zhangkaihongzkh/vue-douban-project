@@ -11,16 +11,17 @@ import Soon from './components/Soon.vue'
 
 export default[
   {
-    path:'/TOP250',
+    path:'/TOP250/:pageNum',
     component:TOP250
   },
   {
-    path:'/Hot',
+    path:'/Hot/:pageNum',
     name:'Hot',
     component:Hot
   },
   {
-    path:'/Soon',
+    path:'/Soon/:pageNum',
+
     component:Soon
   },
   {
@@ -29,6 +30,6 @@ export default[
   },
   {
     path: '/',
-    redirect: '/home'
+    redirect: '/Hot/1'
   }
 ]
