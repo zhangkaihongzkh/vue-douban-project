@@ -1,7 +1,6 @@
 import Nav from './components/Nav.vue'
-import Home from './components/Home.vue'
-import Footer from './components/Footer.vue'
-import Content from './components/Content.vue'
+import SideBar from './components/Nav.vue'
+
 
 
 import TOP250 from './components/TOP250.vue'
@@ -17,6 +16,7 @@ export default[
   },
   {
     path:'/Hot',
+    name:'Hot',
     component:Hot
   },
   {

@@ -1,75 +1,107 @@
+
+
+
 <template>
 
 
-<el-row :gutter="10">
-  <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24"><div class="grid-content bg-purple">
+<el-row>
+  <h1>{{fileDetail.title}}</h1>
+  <el-col :gutter="60" v-for="item in filmItems"  grid-content bg-purple :span="8">
+    <el-card :body-style="{ padding: '0px' }">
+      <img :src="item.images.medium" height="500" class="image">
+      <div style="padding: 20px;">
+        <span>{{item.title}}</span>
+        <div class="text item"><time class="time">原名：</time>{{item.original_title}}</div>
+        <div class="text item"><time class="time">导演：</time><span v-for="director in item.casts">{{director.name}}、</span></div>
+        <div class="text item"><time class="time">年代：</time>{{item.year}}</div>
+        <div class="text item"><time class="time">类型：</time>{{item.genres.join('、')}}</div>
 
-    <el-row>
-      <el-col :span="8" v-for="(o, index) in 10" :key="o" v-on:click.native="upDate">
-        <el-card :body-style="{ padding: '0px' }">
-          <img src="../assets/logo.png" height="200" width="200" class="image">
-          <div style="padding: 14px;">
-            <span>好吃的汉堡</span>
-            <p><span>原名</span>xxxx</p>
-            <p><span>导演</span>xxxx</p>
-            <p><span>类型</span>xxxx</p>
-            <p><span>演员</span>xxxx</p>
-            <div class="bottom clearfix">
-              <time class="time">{{ currentDate }}</time>
-              <el-button type="text" class="button">操作按钮</el-button>
-            </div>
-          </div>
-        </el-card>
-      </el-col>
-    </el-row>
+      </div>
+    </el-card>
+  </el-col>
 
-     <el-row>
-      <el-col :span="8" v-for="(item,index) in detail">
-        <el-card :body-style="{ padding: '0px' }">
-          <img src="../assets/logo.png" height="200" width="200" class="image">
-          <div style="padding: 14px;">
-            <span>好吃的汉堡</span>
-            <p><span>原名</span>{{item.name}}</p>
-            <p><span>导演</span>xxxx</p>
-            <p><span>类型</span>xxxx</p>
-            <p><span>演员</span>xxxx</p>
-            <div class="bottom clearfix">
-              <time class="time"></time>
-              <el-button type="text" class="button">操作按钮</el-button>
-            </div>
-          </div>
-        </el-card>
-      </el-col>
-    </el-row>
-  </div></el-col>
 
+  <div class="block pagComp">
+    <span class="demonstration">大于 7 页时的效果</span>
+    <el-pagination
+      layout="prev, pager, next"
+      :total="1000">
+    </el-pagination>
+
+  </div>
 </el-row>
+
+
 </template>
 
 <script>
-export default{
+
+export default {
   mounted(){
-    this.upDate();
-  }
-  data(){
-    return{
-      detail:{{"name":"zkhzz","age":'1'},{"name":"zkh","age":'12'}}}
-    },
+    this.getData();
+  },
+  computed:{
+    nowPath:function(){
+      return this.$route.fullPath
+    }
+  },
+  data() {
+    return {
+      itemList:['aaa','bbb','ccc'],
+      imageDetail:[{name:'zkhzz',age:'21'},],
+      filmItems:{},
+      fileDetail:{},
+      //fileItem:{}
+    };
   },
   methods:{
-    upDate:function(){
-      alert(1);
+
+    getData:function(){
+      var _this = this;
+      //axios方法不支持跨域 或者说要配置代理很麻烦
+      // this.$http.get('https://api.douban.com/v2/movie/subject/1764796').then(function(res){
+      //   console.log(res);
+      //   _this.filmItems = res;
+      //   });
+      this.$http.jsonp('https://api.douban.com/v2/movie/in_theaters',{
+        params:{
+           start:0,
+           count:9
+        }
+
+      }).then(function(res){
+        //电影类型
+        _this.fileDetail = res.data;
+        //电影相条目
+        _this.filmItems = res.data.subjects;
+        //console.log(res.data);
+        //console.log(_this.filmItems[0].images.medium);
+        console.log(_this.$route);
+      })
+
     }
   }
-
-
 }
+
 
 </script>
 
-<style>
+<style scoped>
+/*
+分页样式
+ */
+.pagComp{
+  text-align: center;
+  margin-bottom:100px;
+}
+.el-card{
+  overflow: hidden;
+}
   .el-col {
     border-radius: 4px;
+    max-height: 650px;
+    overflow: hidden;
+    height: 650px;
   }
   .bg-purple-dark {
     background: #99a9bf;
@@ -118,12 +150,4 @@ export default{
   }
 </style>
 
-<script>
-export default {
-  data() {
-    return {
-      currentDate: new Date()
-    };
-  }
-}
-</script>
+

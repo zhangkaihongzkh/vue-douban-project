@@ -8,7 +8,7 @@
           :default-active="activeIndex"
           class="el-menu-demo"
           mode="horizontal"
-          @select="handleSelect"
+
           background-color="#409EFF"
           text-color="#fff"
           active-text-color="#ffd04b">
@@ -16,10 +16,10 @@
              <el-menu-item index="1"><router-link to="/Hot">正在热映</router-link></el-menu-item>
              <el-menu-item index="2"><router-link to="/Soon">即将上映</router-link></el-menu-item>
              <el-menu-item index="3"><router-link to="/TOP250" >TOP250</router-link></el-menu-item>
-             <el-menu-item :class="right"><el-form ref="form" :model="form" label-width="80px"><el-input
+             <el-menu-item ><el-form ref="form"  label-width="80px"><el-input
             placeholder="Search..."
             prefix-icon="el-icon-search"
-            v-model="input21" :class="hidden-md-and-down">
+            >
           </el-input></el-form></el-menu-item>
           </el-menu>
         </el-header>
@@ -45,10 +45,9 @@
 
 <script>
 //导入模块
-import Home from './components/Home.vue'
-import Footer from './components/Footer.vue'
+
 import Nav from './components/Nav.vue'
-import Content from './components/Content.vue'
+
 import SideBar from './components/SideBar.vue'
 
 export default {
@@ -62,9 +61,8 @@ export default {
 
   },
   components:{
-    Home,
-    Footer,
-    Content,
+
+
     Nav,
     SideBar
   }
