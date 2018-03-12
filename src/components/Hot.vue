@@ -21,7 +21,7 @@
 
   </el-col>
 
- <div class="block pagComp" >
+ <div class="block pagComp" v-loading="loading">
       <div>
         <span class="demonstration">共：{{total}}条记录，当前第{{nowPage}}页，共{{totalPage}}页</span>
       </div>
@@ -108,7 +108,8 @@ export default {
         this.loading = false;
         // console.log(_this.$route);
         //console.log(typeof _this.total);
-      })
+      });
+      this.loading = true;
 
     },
     //页面跳转

@@ -16,11 +16,15 @@
              <el-menu-item index="1"><router-link to="/Hot/1">正在热映</router-link></el-menu-item>
              <el-menu-item index="2"><router-link to="/Soon/1">即将上映</router-link></el-menu-item>
              <el-menu-item index="3"><router-link to="/TOP250/1" >TOP250</router-link></el-menu-item>
-             <el-menu-item ><el-form ref="form"  label-width="80px"><el-input
-            placeholder="Search..."
-            prefix-icon="el-icon-search"
-            >
-          </el-input></el-form></el-menu-item>
+             <el-menu-item >
+             <el-form  action="" @submit.native="search" ref="form"   >
+               <el-input
+              placeholder="Search..."
+              type="text"
+              ></el-input>
+              <el-input type="submit"  v-bind:class="submitBtn" prefix-icon="el-icon-search" value=""></el-input>
+            </el-form>
+            </el-menu-item>
           </el-menu>
         </el-header>
 
@@ -57,8 +61,15 @@ export default {
       activeIndex: '1'
     }
   },
+  data:{
+    submitBtn:{
+      width:'50px'
+    }
+  },
   methods:{
-
+    search(){
+      alert(1)
+    }
   },
   components:{
 
@@ -73,7 +84,9 @@ export default {
 <style scoped>
 .el-header li {float: right;}
 
-
+.submitBtn{
+  width: 50px;
+}
 
 
 </style>
